@@ -15,10 +15,12 @@ class Items(Entity):
         self.amount = stats["amount"]
     
     def draw(self,screen):
-        pygame.draw.circle(
+        top = (self.pos.x, self.pos.y - self.size)
+        left = (self.pos.x - self.size, self.pos.y + self.size)
+        right = (self.pos.x + self.size, self.pos.y + self.size)
+        pygame.draw.polygon(
             screen,
             self.color,
-            self.pos,
-            self.size
+            [top, left, right]
         )
     

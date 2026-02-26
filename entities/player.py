@@ -54,5 +54,5 @@ class Player(Entity):
             self.shoot_damage += 1
 
     def limit(self):
-        self.pos.x = max(0, min(self.pos.x, settings.WIDTH - self.size))
-        self.pos.y = max(0, min(self.pos.y, settings.HEIGHT - self.size))
+        self.pos.x = max(0, min(self.pos.x, settings.WIDTH))
+        self.pos.y = max(0, min(self.pos.y, settings.HEIGHT))

@@ -19,5 +19,12 @@
     "hp": 15,
     "damage": 3,
     "speed": 50
+  },
+  "boss": {
+    "size": 90,
+    "color": [50, 200, 200],
+    "hp": 100,
+    "damage": 3,
+    "speed": 20
   }
 }

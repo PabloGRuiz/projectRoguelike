@@ -6,10 +6,11 @@ from entities.player import Player
 from entities.enemy import Enemy
 from entities.experience import Experience
 from entities.item import Items 
-
 from systems.randomCoord import GenerateCoords
 from systems.collision import Collision
 from systems.combat import Combat
+from core.data_manager import ENEMY_DB, ITEMS_DB
+from systems.spawner import Spawner
 
 class Game:
     def __init__(self):
@@ -19,6 +20,7 @@ class Game:
         self.reSpawn()
         self.projectiles = []
         self.experiences = []
+        self.floating_texts = []
 
     def draw_text(self, text, size, color, x, y):
         font = pygame.font.SysFont('Arial', size)
@@ -32,14 +34,8 @@ class Game:
         self.enemies = []
         self.items = []
         
-        item_types = ["heal", "increase_damage", "increase_speed"]
-        enemy_types = ["default", "speeder", "tank"]
-        
-        for i in range(5):
-            spawn_x, spawn_y = GenerateCoords()
-            random_type = random.choice(enemy_types)
-            enemy = Enemy(spawn_x, spawn_y, random_type) 
-            self.enemies.append(enemy)
+        item_types = list(ITEMS_DB.keys())
+        self.enemy_spawner = Spawner(self.enemies)
 
         for i in range(3):
             spawn_x, spawn_y = GenerateCoords()
@@ -48,10 +44,11 @@ class Game:
             self.items.append(item)
             
     def check_entity_alive(self):
-        self.enemies = [e for e in self.enemies if e.alive]
-        self.projectiles = [p for p in self.projectiles if p.alive]
-        self.experiences = [xp for xp in self.experiences if xp.alive]
-        self.items = [item for item in self.items if item.alive]
+        self.enemies[:] = [e for e in self.enemies if e.alive]
+        self.projectiles[:] = [p for p in self.projectiles if p.alive]
+        self.experiences[:] = [xp for xp in self.experiences if xp.alive]
+        self.items[:] = [item for item in self.items if item.alive]
+        self.floating_texts[:] = [text for text in self.floating_texts if text.alive]
         
         if not self.player.alive:
             self.player.can_shoot = False
@@ -79,15 +76,26 @@ class Game:
             if projectile:
                 self.projectiles.append(projectile)
             
+            self.enemy_spawner.update(dt)
+            
             for enemy in self.enemies:
                 enemy.chase(self.player)
                 enemy.update(dt)
                 
             for projectile in self.projectiles:
                 projectile.update(dt)
+                
+            for text in self.floating_texts:
+                text.update(dt)
             
             # COLLISIONS      
-            Combat.check_entity_collision(self.player, self.enemies, self.projectiles, self.experiences, self.items)
+            Combat.check_entity_collision(self.player,
+                self.enemies,
+                self.projectiles,
+                self.experiences,
+                self.items,
+                self.floating_texts
+                )
             
             # CLEAN-UP
             self.check_entity_alive()
@@ -111,6 +119,9 @@ class Game:
                     
             for xp in self.experiences:
                 xp.draw(self.screen)
+                
+            for text in self.floating_texts:
+                text.draw(self.screen)
                             
             pygame.display.flip()
         
