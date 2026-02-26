@@ -1,13 +1,7 @@
-import random
 import pygame
 import settings
 
 from entities.player import Player
-from entities.enemy import Enemy
-from entities.experience import Experience
-from entities.item import Items 
-from systems.randomCoord import GenerateCoords
-from systems.collision import Collision
 from systems.combat import Combat
 from core.data_manager import ENEMY_DB, ITEMS_DB
 from systems.spawner import Spawner
@@ -33,16 +27,8 @@ class Game:
         self.player = Player(400, 250, 5)
         self.enemies = []
         self.items = []
+        self.spawner = Spawner(self.enemies, self.items)
         
-        item_types = list(ITEMS_DB.keys())
-        self.enemy_spawner = Spawner(self.enemies)
-
-        for i in range(3):
-            spawn_x, spawn_y = GenerateCoords()
-            random_type = random.choice(item_types)
-            item = Items(spawn_x, spawn_y, random_type) 
-            self.items.append(item)
-            
     def check_entity_alive(self):
         self.enemies[:] = [e for e in self.enemies if e.alive]
         self.projectiles[:] = [p for p in self.projectiles if p.alive]
@@ -76,7 +62,7 @@ class Game:
             if projectile:
                 self.projectiles.append(projectile)
             
-            self.enemy_spawner.update(dt)
+            self.spawner.update(dt)  
             
             for enemy in self.enemies:
                 enemy.chase(self.player)

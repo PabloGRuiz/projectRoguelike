@@ -4,7 +4,7 @@ from entities.entity import Entity
 
 from core.data_manager import ITEMS_DB
 
-class Items(Entity):
+class Item(Entity):
     def __init__(self, x, y, items_type="heal"):
         stats = ITEMS_DB.get(items_type, ITEMS_DB["heal"])
         size = stats["size"]
