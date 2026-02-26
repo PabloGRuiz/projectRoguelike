@@ -9,6 +9,7 @@ class Player(Entity):
         self.live_points = lp
         self.shoot_timer = 0
         self.shoot_cooldown = 0.8
+        self.shoot_damage = 1
         self.can_shoot = False
         self.xp = 0
         
@@ -42,10 +43,15 @@ class Player(Entity):
         return projectile
     
     def create_projectiles(self,targets):
-        projectile = Projectile(self.pos.x, self.pos.y,1)
+        projectile = Projectile(self.pos.x, self.pos.y, self.shoot_damage)
         projectile.shoot(targets)
         return projectile
-    
+
+    def level_up(self, xp):
+        self.xp += xp
+        if self.xp >= 3:
+            self.shoot_damage += 1
+
     def limit(self):
         self.pos.x = max(0, min(self.pos.x, settings.WIDTH - self.size))
         self.pos.y = max(0, min(self.pos.y, settings.HEIGHT - self.size))

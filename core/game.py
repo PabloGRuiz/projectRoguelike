@@ -16,6 +16,13 @@ class Game:
         self.projectiles = []
         self.experiences = []
 
+    def draw_text(self, text, size, color, x, y):
+        font = pygame.font.SysFont('Arial', size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        text_rect.topleft = (x, y)
+        self.screen.blit(text_surface, text_rect)
+
     def reSpawn(self):
         self.player = Player(400, 250, 5)
         self.enemies = []
@@ -71,6 +78,8 @@ class Game:
             
             # DRAW
             self.screen.fill((30,30,30))
+
+            self.draw_text(f'Experience: {self.player.xp}', 24, (255,255,255), 10, 10)
             
             if self.player.alive:
                 self.player.draw(self.screen)

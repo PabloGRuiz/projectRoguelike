@@ -6,7 +6,7 @@ class Combat:
         
         for xp in experiences:
                 if Collision.check(player,xp):
-                    player.xp += xp.experience
+                    player.level_up(xp.experience)
                     print("experiencia total: " + str(player.xp))
                     xp.dead()
             
