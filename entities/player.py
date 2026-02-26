@@ -11,7 +11,8 @@ class Player(Entity):
         self.shoot_cooldown = 0.8
         self.shoot_damage = 1
         self.can_shoot = False
-        self.xp = 0
+        self.speed = 250
+        self.xp = 0                                                                                                                                                                                                   
         
     def handle_input(self):
         if self.alive:

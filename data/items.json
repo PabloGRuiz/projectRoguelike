@@ -1,0 +1,22 @@
+{
+    "heal":{
+        "name": "Health Potion",
+        "size": 4,
+        "color": [50, 200, 50],
+        "amount": 1
+        },
+    "increase_damage": {
+        "name": "Damage Boost",
+        "size": 4,
+        "color": [200, 50, 50],
+        "amount": 1
+        },
+    "increase_speed": {
+        "name": "Speed Boost",
+        "size": 4,
+        "color": [50, 50, 200],
+        "amount": 25
+        }
+    
+    
+}

@@ -1,9 +1,12 @@
 import random
 import pygame
 import settings
+
 from entities.player import Player
 from entities.enemy import Enemy
 from entities.experience import Experience
+from entities.item import Items 
+
 from systems.randomCoord import GenerateCoords
 from systems.collision import Collision
 from systems.combat import Combat
@@ -27,7 +30,9 @@ class Game:
     def reSpawn(self):
         self.player = Player(400, 250, 5)
         self.enemies = []
+        self.items = []
         
+        item_types = ["heal", "increase_damage", "increase_speed"]
         enemy_types = ["default", "speeder", "tank"]
         
         for i in range(5):
@@ -35,11 +40,18 @@ class Game:
             random_type = random.choice(enemy_types)
             enemy = Enemy(spawn_x, spawn_y, random_type) 
             self.enemies.append(enemy)
+
+        for i in range(3):
+            spawn_x, spawn_y = GenerateCoords()
+            random_type = random.choice(item_types)
+            item = Items(spawn_x, spawn_y, random_type) 
+            self.items.append(item)
             
     def check_entity_alive(self):
         self.enemies = [e for e in self.enemies if e.alive]
         self.projectiles = [p for p in self.projectiles if p.alive]
         self.experiences = [xp for xp in self.experiences if xp.alive]
+        self.items = [item for item in self.items if item.alive]
         
         if not self.player.alive:
             self.player.can_shoot = False
@@ -75,7 +87,7 @@ class Game:
                 projectile.update(dt)
             
             # COLLISIONS      
-            Combat.check_entity_collision(self.player, self.enemies, self.projectiles, self.experiences)
+            Combat.check_entity_collision(self.player, self.enemies, self.projectiles, self.experiences, self.items)
             
             # CLEAN-UP
             self.check_entity_alive()
@@ -90,6 +102,9 @@ class Game:
             
             for enemy in self.enemies:
                 enemy.draw(self.screen)
+
+            for item in self.items:
+                item.draw(self.screen)
                 
             for projectile in self.projectiles:
                 projectile.draw(self.screen)

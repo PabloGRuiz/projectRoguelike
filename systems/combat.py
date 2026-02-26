@@ -2,14 +2,25 @@ from systems.collision import Collision
 from entities.experience import Experience
 
 class Combat:
-    def check_entity_collision(player, enemies, projectiles, experiences):
+    def check_entity_collision(player, enemies, projectiles, experiences, items):
         
         for xp in experiences:
                 if Collision.check(player,xp):
                     player.level_up(xp.experience)
                     print("experiencia total: " + str(player.xp))
                     xp.dead()
-            
+        
+        for item in items:
+                if Collision.check(player,item):
+                    if item.type == "heal":
+                        player.live_points += item.amount
+                    elif item.type == "increase_damage":
+                        player.shoot_damage += item.amount
+                    elif item.type == "increase_speed":
+                        player.speed += item.amount
+                    print(f"Recogiste un {item.name}!")
+                    item.dead()
+
         for enemy in enemies:
             for projectile in projectiles:
                 
