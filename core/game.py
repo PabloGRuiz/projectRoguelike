@@ -1,3 +1,4 @@
+import random
 import pygame
 import settings
 from entities.player import Player
@@ -27,9 +28,12 @@ class Game:
         self.player = Player(400, 250, 5)
         self.enemies = []
         
+        enemy_types = ["default", "speeder", "tank"]
+        
         for i in range(5):
             spawn_x, spawn_y = GenerateCoords()
-            enemy = Enemy(spawn_x, spawn_y, 3, 1)
+            random_type = random.choice(enemy_types)
+            enemy = Enemy(spawn_x, spawn_y, random_type) 
             self.enemies.append(enemy)
             
     def check_entity_alive(self):
