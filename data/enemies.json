@@ -26,5 +26,12 @@
     "hp": 100,
     "damage": 3,
     "speed": 20
+  },
+  "berserk": {
+    "size": 30,
+    "color": [200, 50, 50],
+    "hp": 30,
+    "damage": 4,
+    "speed": 120
   }
 }
