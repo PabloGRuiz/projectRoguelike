@@ -5,6 +5,7 @@ from entities.player import Player
 from systems.combat import Combat
 from core.data_manager import ENEMY_DB, ITEMS_DB
 from systems.spawner import Spawner
+from systems.timer import Timer
 
 class Game:
     def __init__(self):
@@ -28,6 +29,7 @@ class Game:
         self.enemies = []
         self.items = []
         self.spawner = Spawner(self.enemies, self.items)
+        self.game_timer = Timer()
         
     def check_entity_alive(self):
         self.enemies[:] = [e for e in self.enemies if e.alive]
@@ -58,6 +60,7 @@ class Game:
                         self.reSpawn()
             
             # UPDATE
+            self.game_timer.update(dt)
             projectile = self.player.update(dt,self.enemies)
             if projectile:
                 self.projectiles.append(projectile)

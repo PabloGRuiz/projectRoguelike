@@ -16,6 +16,24 @@
         "size": 4,
         "color": [50, 50, 200],
         "amount": 25
+        },
+    "heal2":{
+        "name": "High Health Potion",
+        "size": 4,
+        "color": [239, 184, 16],
+        "amount": 5
+        },
+    "increase_damage2": {
+        "name": "Damage Boost x2",
+        "size": 4,
+        "color": [239, 184, 16],
+        "amount": 2
+        },
+    "increase_speed2": {
+        "name": "Speed Boost x2",
+        "size": 4,
+        "color": [239, 184, 16],
+        "amount": 50
         }
     
     
