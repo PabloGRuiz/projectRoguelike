@@ -12,7 +12,8 @@ class Player(Entity):
         self.shoot_damage = 1
         self.can_shoot = False
         self.speed = 250
-        self.xp = 0                                                                                                                                                                                                   
+        self.xp = 0           
+        self.level = 0                                                                                                                                                                                        
         
     def handle_input(self):
         if self.alive:
@@ -49,9 +50,12 @@ class Player(Entity):
         return projectile
 
     def level_up(self, xp):
+        level_up = 5
         self.xp += xp
-        if self.xp >= 3:
+        if xp >= level_up:
+            print("Level up!")
             self.shoot_damage += 1
+            self.level += 1
 
     def limit(self):
         self.pos.x = max(0, min(self.pos.x, settings.WIDTH))

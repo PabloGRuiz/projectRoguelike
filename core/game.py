@@ -2,9 +2,12 @@ import pygame
 import settings
 
 from entities.player import Player
+
 from systems.combat import Combat
 from core.data_manager import ENEMY_DB, ITEMS_DB
 from systems.spawner import Spawner
+from systems.timer import Timer
+from GUI.playerUI import PlayerUI   
 
 class Game:
     def __init__(self):
@@ -16,18 +19,12 @@ class Game:
         self.experiences = []
         self.floating_texts = []
 
-    def draw_text(self, text, size, color, x, y):
-        font = pygame.font.SysFont('Arial', size)
-        text_surface = font.render(text, True, color)
-        text_rect = text_surface.get_rect()
-        text_rect.topleft = (x, y)
-        self.screen.blit(text_surface, text_rect)
-
     def reSpawn(self):
         self.player = Player(400, 250, 5)
         self.enemies = []
         self.items = []
         self.spawner = Spawner(self.enemies, self.items)
+        self.game_timer = Timer()
         
     def check_entity_alive(self):
         self.enemies[:] = [e for e in self.enemies if e.alive]
@@ -58,6 +55,7 @@ class Game:
                         self.reSpawn()
             
             # UPDATE
+            self.game_timer.update(dt)
             projectile = self.player.update(dt,self.enemies)
             if projectile:
                 self.projectiles.append(projectile)
@@ -89,7 +87,7 @@ class Game:
             # DRAW
             self.screen.fill((30,30,30))
 
-            self.draw_text(f'Experience: {self.player.xp}', 24, (255,255,255), 10, 10)
+            PlayerUI.draw(self.screen, self.player)
             
             if self.player.alive:
                 self.player.draw(self.screen)
