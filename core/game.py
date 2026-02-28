@@ -61,11 +61,12 @@ class Game:
             
             # UPDATE
             self.game_timer.update(dt)
+            
             projectile = self.player.update(dt,self.enemies)
             if projectile:
                 self.projectiles.append(projectile)
             
-            self.spawner.update(dt)  
+            self.spawner.update(dt,self.game_timer)  
             
             for enemy in self.enemies:
                 enemy.chase(self.player)
