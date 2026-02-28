@@ -52,10 +52,11 @@ class Player(Entity):
     def level_up(self, xp):
         level_up = 5
         self.xp += xp
-        if xp >= level_up:
+        if self.xp >= level_up:
             print("Level up!")
             self.shoot_damage += 1
             self.level += 1
+            self.xp = 0
 
     def limit(self):
         self.pos.x = max(0, min(self.pos.x, settings.WIDTH))
