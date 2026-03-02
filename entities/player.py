@@ -1,7 +1,7 @@
 import pygame
 import settings
 from entities.entity import Entity
-from entities.projecetile import Projectile
+from entities.projectile import Projectile 
 
 class Player(Entity):
     def __init__(self, x, y, lp):
@@ -11,9 +11,13 @@ class Player(Entity):
         self.shoot_cooldown = 0.8
         self.shoot_damage = 1
         self.can_shoot = False
+        
         self.speed = 250
-        self.xp = 0           
-        self.level = 0                                                                                                                                                                                        
+        
+        self.xp = 0 
+        self.level = 1
+        self.xp_necesaria = 3
+        self.leveled_up = False
         
     def handle_input(self):
         if self.alive:
@@ -22,15 +26,15 @@ class Player(Entity):
             self.velocity.y = 0
             
             if keys[pygame.K_a]:
-                self.velocity.x = -settings.PLAYER_SPEED
+                self.velocity.x = -self.speed
             if keys[pygame.K_d]:
-                self.velocity.x = settings.PLAYER_SPEED
+                self.velocity.x = self.speed
             if keys[pygame.K_w]:
-                self.velocity.y = -settings.PLAYER_SPEED
+                self.velocity.y = -self.speed
             if keys[pygame.K_s]:
-                self.velocity.y = settings.PLAYER_SPEED
+                self.velocity.y = self.speed
                     
-    def update(self,dt,targets):
+    def update(self, dt, targets):
         self.limit()
         self.handle_input()
         
@@ -44,19 +48,20 @@ class Player(Entity):
         super().update(dt)
         return projectile
     
-    def create_projectiles(self,targets):
+    def create_projectiles(self, targets):
         projectile = Projectile(self.pos.x, self.pos.y, self.shoot_damage)
         projectile.shoot(targets)
         return projectile
 
     def level_up(self, xp):
-        level_up = 5
         self.xp += xp
-        if self.xp >= level_up:
-            print("Level up!")
-            self.shoot_damage += 1
+        
+        if self.xp >= self.xp_necesaria:
+            self.xp -= self.xp_necesaria
             self.level += 1
-            self.xp = 0
+            self.xp_necesaria = int(self.xp_necesaria * 1.5) 
+            
+            self.leveled_up = True
 
     def limit(self):
         self.pos.x = max(0, min(self.pos.x, settings.WIDTH))

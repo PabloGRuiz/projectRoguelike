@@ -28,7 +28,7 @@ class Spawner:
         self.item_time = 0.0
         self.item_spawn_rate = 15.0
 
-    def update(self, dt, timer):
+    def update(self, dt, timer, player):
         self.enemy_time += dt
         self.item_time += dt
         
@@ -49,24 +49,24 @@ class Spawner:
             mas_debil = min(self.enemy_power_map, key=self.enemy_power_map.get)
             self.allowed_enemies.append(mas_debil)
             
-        #---Inteliget Spawner
+        #---Inteligent Spawner
         
         if self.enemy_time >= self.current_enemy_spawn_rate:
-            self.spawn_enemy()
+            self.spawn_enemy(player)
             self.enemy_time = 0.0
             
         if self.item_time >= self.item_spawn_rate:
-            self.spawn_item()
+            self.spawn_item(player)
             self.item_time = 0.0
 
-    def spawn_enemy(self):
-        spawn_x, spawn_y = GenerateCoords()
+    def spawn_enemy(self, player):
+        spawn_x, spawn_y = GenerateCoords(player)
         random_type = random.choice(self.allowed_enemies)
         enemy = Enemy(spawn_x, spawn_y, random_type) 
         self.enemy_list.append(enemy)
         
-    def spawn_item(self):
-        spawn_x, spawn_y = GenerateCoords()
+    def spawn_item(self,player):
+        spawn_x, spawn_y = GenerateCoords(player, 100)
         random_type = random.choice(self.item_types)
         item = Item(spawn_x, spawn_y, random_type) 
         self.item_list.append(item)
