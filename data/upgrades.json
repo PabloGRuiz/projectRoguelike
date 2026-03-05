@@ -1,0 +1,26 @@
+{
+    "more_Damage": {
+        "name": "Damage",
+        "upgrade": {
+            "shoot_damage": 2
+        }
+    },
+    "more_Speed": {
+        "name": "Speed",
+        "upgrade": {
+            "speed": 50
+        }
+    },
+    "more_Projectiles": {
+        "name": "Add 1 Projectile",
+        "upgrade": {
+            "amount_projectile": 1
+        }
+    },
+    "more_Live": {
+        "name": "Live",
+        "upgrade": {
+            "live_points": 1
+        }
+    }
+}

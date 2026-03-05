@@ -50,13 +50,20 @@ class Combat:
 
             for projectile in projectiles:
                 if Collision.check(projectile, enemy):
-                    if enemy.alive:
-                        damage_text = FloatingText(enemy.pos.x, enemy.pos.y - 10, projectile.damage)
+                    if enemy.alive and projectile.alive:
+
+                        damage_text = FloatingText(
+                            enemy.pos.x,
+                            enemy.pos.y - 10,
+                            projectile.damage
+                        )
                         floating_texts.append(damage_text)
-                        
+
                         if enemy.live_points - projectile.damage <= 0:
                             xp = Experience(enemy.pos.x, enemy.pos.y, 1)
                             experiences.append(xp)
-                            
+
                         enemy.live_points -= projectile.damage
-                        projectile.dead()
+
+                        # 🔥 ahora sí usamos el sistema nuevo
+                        projectile.on_hit(enemies)

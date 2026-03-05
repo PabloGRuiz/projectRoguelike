@@ -11,8 +11,18 @@ class Player(Entity):
         self.shoot_cooldown = 0.8
         self.shoot_damage = 1
         self.can_shoot = False
+
+        self.projectile_speed = 500
+        self.pierce = 0
+        self.bounce = 0
+
+        self.shoot_backwards = False
+        self.side_shots = False
+        self.extra_projectiles = 0
         
         self.speed = 250
+
+        self.amount_projectile = 1
         
         self.xp = 0 
         self.level = 1
@@ -48,10 +58,70 @@ class Player(Entity):
         super().update(dt)
         return projectile
     
+    import math
+
     def create_projectiles(self, targets):
-        projectile = Projectile(self.pos.x, self.pos.y, self.shoot_damage)
-        projectile.shoot(targets)
-        return projectile
+        if not targets:
+            return None
+
+        projectiles = []
+
+        # 🔎 enemigo más cercano
+        closest = min(
+            targets,
+            key=lambda enemy: (enemy.pos - self.pos).length()
+        )
+
+        base_direction = closest.pos - self.pos
+
+        if base_direction.length() == 0:
+            return None
+
+        base_direction = base_direction.normalize()
+
+        spread_angle = 30
+        total = self.amount_projectile
+
+        # ---------------- DIRECCIONES BASE ----------------
+        directions = []
+
+        # abanico principal
+        for i in range(total):
+            if total > 1:
+                angle_offset = spread_angle * (i - (total - 1) / 2)
+                rotated = base_direction.rotate(angle_offset)
+                directions.append(rotated)
+            else:
+                directions.append(base_direction)
+
+        # disparo atrás
+        if self.shoot_backwards:
+            directions.append(-base_direction)
+
+        # laterales
+        if self.side_shots:
+            directions.append(base_direction.rotate(90))
+            directions.append(base_direction.rotate(-90))
+
+        # extra proyectiles (misma dirección base)
+        for _ in range(self.extra_projectiles):
+            directions.append(base_direction)
+
+        # ---------------- CREAR PROYECTILES ----------------
+        for direction in directions:
+            projectile = Projectile(
+                self.pos.x,
+                self.pos.y,
+                direction,
+                self.projectile_speed,
+                self.shoot_damage,
+                pierce=self.pierce,
+                bounce=self.bounce
+            )
+
+            projectiles.append(projectile)
+
+        return projectiles
 
     def level_up(self, xp):
         self.xp += xp
@@ -62,6 +132,17 @@ class Player(Entity):
             self.xp_necesaria = int(self.xp_necesaria * 1.5) 
             
             self.leveled_up = True
+
+    def apply_upgrade(self, upgrade_data):
+        for attr, value in upgrade_data["upgrade"].items():
+            if hasattr(self, attr):
+                current_value = getattr(self, attr)
+                new_value = current_value + value
+
+                if attr == "shoot_cooldown":
+                    new_value = max(0.2, new_value)
+
+                setattr(self, attr, new_value)
 
     def limit(self):
         self.pos.x = max(0, min(self.pos.x, settings.WIDTH))
