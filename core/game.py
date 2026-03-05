@@ -8,21 +8,25 @@ from systems.combat import Combat
 from core.data_manager import ENEMY_DB, ITEMS_DB, UPGRADES_DB
 from systems.spawner import Spawner
 from systems.timer import Timer
-from GUI.playerUI import PlayerUI   
+from GUI.playerUI import PlayerUI
+from systems.audio_manager import AudioManager  
 
 class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
         self.clock = pygame.time.Clock()
+        self.audio = AudioManager() 
         self.reSpawn()
         self.current_upgrades = []
 
     def reSpawn(self):
         self.player = Player(400, 250, 5)
+        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
         self.enemies = []
         self.items = []
-        self.projectiles = []   # ← LISTA NORMAL
+        self.projectiles = []
+        self.enemy_projectiles = [] # RESTORED: Boss bullets list
         self.experiences = []
         self.floating_texts = []
         self.state = "PLAYING"
@@ -32,6 +36,7 @@ class Game:
     def check_entity_alive(self):
         self.enemies[:] = [e for e in self.enemies if e.alive]
         self.projectiles[:] = [p for p in self.projectiles if p.alive]
+        self.enemy_projectiles[:] = [ep for ep in self.enemy_projectiles if ep.alive] # RESTORED
         self.experiences[:] = [xp for xp in self.experiences if xp.alive]
         self.items[:] = [item for item in self.items if item.alive]
         self.floating_texts[:] = [text for text in self.floating_texts if text.alive]
@@ -51,7 +56,7 @@ class Game:
         while running:
             dt = self.clock.tick(settings.FPS) / 1000
 
-            # ---------------- EVENTS ----------------
+            # --- EVENTS ---
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -68,12 +73,12 @@ class Game:
                                 self.player.apply_upgrade(selected_upgrade)
                                 self.state = "PLAYING"
 
-            # ---------------- UPDATE ----------------
+            # --- UPDATE ---
             if self.state == "PLAYING":
 
                 self.game_timer.update(dt)
 
-                # 🔫 PLAYER UPDATE (devuelve proyectiles)
+                # Player update
                 new_projectiles = self.player.update(dt, self.enemies)
 
                 if new_projectiles:
@@ -82,42 +87,50 @@ class Game:
                     else:
                         self.projectiles.append(new_projectiles)
 
-                # 🧟 Spawner
+                # Spawner
                 self.spawner.update(dt, self.game_timer, self.player)
 
-                # 🧟 Enemies
+                # Enemies
                 for enemy in self.enemies:
                     enemy.chase(self.player)
-                    enemy.update(dt)
+                    # RESTORED: Capture boss projectiles if they shoot
+                    boss_projs = enemy.update(dt)
+                    if boss_projs:
+                        self.enemy_projectiles.extend(boss_projs)
 
-                # 💥 Projectiles
+                # Player Projectiles
                 for projectile in self.projectiles:
                     projectile.update(dt)
+                    
+                # RESTORED: Enemy Projectiles
+                for ep in self.enemy_projectiles:
+                    ep.update(dt)
 
-                # 📝 Floating texts
+                # Floating texts
                 for text in self.floating_texts:
                     text.update(dt)
 
-                # ⭐ Level up
+                # Level up trigger
                 if self.player.leveled_up:
                     self.generate_upgrade_options()
                     self.state = "LEVEL_UP"
                     self.player.leveled_up = False
 
-                # ⚔️ COLLISIONS
+                # --- COLLISIONS ---
                 Combat.check_entity_collision(
                     self.player,
                     self.enemies,
                     self.projectiles,
+                    self.enemy_projectiles, # RESTORED: Passed the missing argument!
                     self.experiences,
                     self.items,
                     self.floating_texts
                 )
 
-                # 🧹 CLEAN
+                # --- CLEAN-UP ---
                 self.check_entity_alive()
 
-            # ---------------- DRAW ----------------
+            # --- DRAW ---
             self.screen.fill((30, 30, 30))
 
             PlayerUI.draw(self.screen, self.player)
@@ -133,6 +146,10 @@ class Game:
 
             for projectile in self.projectiles:
                 projectile.draw(self.screen)
+                
+            # RESTORED: Draw boss bullets
+            for ep in self.enemy_projectiles:
+                ep.draw(self.screen)
 
             for xp in self.experiences:
                 xp.draw(self.screen)

@@ -33,5 +33,25 @@
     "hp": 30,
     "damage": 4,
     "speed": 120
+  },
+  "boss_ojo_maldito": {
+    "size": 60,
+    "color": [150, 0, 0],
+    "hp": 150,
+    "damage": 10,
+    "speed": 80,
+    "move_pattern": "center", 
+    "shoot_pattern": "ring",
+    "attack_cooldown": 2.5
+  },
+  "boss_torreta": {
+    "size": 50,
+    "color": [100, 100, 100],
+    "hp": 150,
+    "damage": 5,
+    "speed": 0,
+    "move_pattern": "static",
+    "shoot_pattern": "spiral",
+    "attack_cooldown": 0.5
   }
 }
