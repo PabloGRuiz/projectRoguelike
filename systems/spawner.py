@@ -36,8 +36,7 @@ class Spawner:
         
         boss_alive = any(isinstance(e, Boss) for e in self.enemy_list)
 
-        # Boss spawns at 60 seconds (Temporary for testing)
-        if seconds >= 60 and not self.boss_spawned:
+        if seconds >= 120 and not self.boss_spawned:
             self.spawn_boss(player)
             self.boss_spawned = True
             boss_alive = True
