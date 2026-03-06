@@ -38,7 +38,7 @@
     "size": 60,
     "color": [150, 0, 0],
     "hp": 1500,
-    "damage": 5,
+    "damage": 3,
     "speed": 50,
     "move_pattern": "center", 
     "shoot_pattern": "ring",

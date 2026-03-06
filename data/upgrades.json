@@ -2,7 +2,7 @@
     "more_Damage": {
         "name": "Damage",
         "upgrade": {
-            "shoot_damage": 2
+            "shoot_damage": 4
         }
     },
     "more_Speed": {
@@ -20,7 +20,7 @@
     "more_Live": {
         "name": "Live",
         "upgrade": {
-            "live_points": 2
+            "live_points": 5
         }
     },
     "heavy_upgrade": {
