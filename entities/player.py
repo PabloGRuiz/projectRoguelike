@@ -14,14 +14,14 @@ class Player(Entity):
         
         # --- SHOOTING ---
         self.shoot_timer = 0
-        self.shoot_cooldown = 0.8
+        self.shoot_cooldown = 1.5
         self.shoot_damage = 1
         self.can_shoot = False
         self.shoot_backwards = False
         self.side_shots = False
         self.extra_projectiles = 0
         self.amount_projectile = 1
-        self.projectile_type_equipped = "light"
+        self.projectile_type_equipped = "basic"
         
         # --- MOVEMENT ---
         self.speed = 250
@@ -132,10 +132,17 @@ class Player(Entity):
         for attr, value in upgrade_data["upgrade"].items():
             if hasattr(self, attr):
                 current_value = getattr(self, attr)
-                new_value = current_value + value
+                
+                # --- STRINGS (REEMPLAZO) ---
+                if isinstance(value, str):
+                    new_value = value
+                    
+                # --- NÚMEROS (SUMA) ---
+                else:
+                    new_value = current_value + value
 
-                if attr == "shoot_cooldown":
-                    new_value = max(0.2, new_value)
+                    if attr == "shoot_cooldown":
+                        new_value = max(0.2, new_value)
 
                 setattr(self, attr, new_value)
 

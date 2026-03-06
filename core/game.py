@@ -47,10 +47,17 @@ class Game:
         self.player.can_shoot = self.player.alive
 
     def generate_upgrade_options(self):
-        all_upgrades = list(UPGRADES_DB.values())
+        available_upgrades = []
+        
+        for upgrade in UPGRADES_DB.values():
+            stats = upgrade["upgrade"]
+            if "projectile_type_equipped" in stats:
+                if stats["projectile_type_equipped"] == self.player.projectile_type_equipped:
+                    continue
+            available_upgrades.append(upgrade)
         self.current_upgrades = random.sample(
-            all_upgrades,
-            min(3, len(all_upgrades))
+            available_upgrades,
+            min(3, len(available_upgrades))
         )
 
     def run(self):
@@ -110,6 +117,9 @@ class Game:
                     self.generate_upgrade_options()
                     self.state = "LEVEL_UP"
                     self.player.leveled_up = False
+                    
+                for xp in self.experiences:
+                    xp.update(dt)
 
                 # COLLISIONS
                 Combat.check_entity_collision(

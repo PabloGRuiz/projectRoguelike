@@ -8,11 +8,22 @@ class Combat:
     
     @staticmethod
     def apply_item_effect(item, player, enemies, experiences, floating_texts):
+        
         # --- STATS MODIFIERS ---
         for stat_name, amount in item.stats_changes.items():
             if hasattr(player, stat_name):
                 current_value = getattr(player, stat_name)
-                setattr(player, stat_name, current_value + amount)
+                new_value = current_value + amount
+                
+                # --- LIMITS ---
+                if stat_name == "shoot_cooldown":
+                    new_value = max(0.2, new_value)
+                    
+                # If you add max health later, you can cap it here like this:
+                # elif stat_name == "live_points" and hasattr(player, "max_live_points"):
+                #     new_value = min(player.max_live_points, new_value)
+
+                setattr(player, stat_name, new_value)
                 
                 sign = "+" if amount > 0 else ""
                 feedback_text = f"{sign}{amount} {stat_name}"
@@ -28,7 +39,10 @@ class Combat:
                         xp = Experience(enemy.pos.x, enemy.pos.y, 1)
                         experiences.append(xp)
                         floating_texts.append(FloatingText(enemy.pos.x, enemy.pos.y, "BOOM!", (255, 100, 0)))
-
+            elif event == "magnet":
+                for xp in experiences:
+                    if xp.alive:
+                        xp.target = player
 
     @staticmethod
     def check_entity_collision(player, enemies, projectiles, enemy_projectiles, experiences, items, floating_texts):
@@ -44,6 +58,7 @@ class Combat:
         for item in items:
             if item.alive and Collision.check(player, item):
                 Combat.apply_item_effect(item, player, enemies, experiences, floating_texts)
+                print(f"{item.name} recogido!")
                 item.dead()
 
         # --- ENEMIES ---

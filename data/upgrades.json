@@ -22,5 +22,23 @@
         "upgrade": {
             "live_points": 1
         }
+    },
+    "heavy_upgrade": {
+        "name": "Heavy Projectile",
+        "upgrade": {
+            "projectile_type_equipped": "heavy"
+        }
+    },
+    "light_upgrade": {
+        "name": "Light Projectile",
+        "upgrade": {
+            "projectile_type_equipped": "light"
+        }
+    },
+    "basic_upgrade": {
+        "name": "Basic Projectile",
+        "upgrade": {
+            "projectile_type_equipped": "basic"
+        }
     }
 }
