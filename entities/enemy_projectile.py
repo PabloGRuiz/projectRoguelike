@@ -5,7 +5,7 @@ class EnemyProjectile:
         
         # --- BASE STATS ---
         self.pos = pygame.Vector2(x, y)
-        self.size = 10
+        self.size = 6
         self.color = (255, 100, 0)
         self.alive = True
         

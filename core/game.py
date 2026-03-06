@@ -34,8 +34,8 @@ class Game:
         self.btn_salir = pygame.Rect(settings.WIDTH // 2 - 100, settings.HEIGHT // 2 + 50, 200, 60)
 
     def reSpawn(self):
-        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
         self.timerUI.color = (255,255,255)
+        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
         self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5, self.audio)
         self.enemies = []
         self.items = []

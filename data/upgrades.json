@@ -2,7 +2,7 @@
     "more_Damage": {
         "name": "Damage",
         "upgrade": {
-            "shoot_damage": 2
+            "shoot_damage": 4
         }
     },
     "more_Speed": {
@@ -12,15 +12,15 @@
         }
     },
     "more_Projectiles": {
-        "name": "Add 1 Projectile",
+        "name": "Add 2 Projectile",
         "upgrade": {
-            "amount_projectile": 1
+            "amount_projectile": 2
         }
     },
     "more_Live": {
         "name": "Live",
         "upgrade": {
-            "live_points": 1
+            "live_points": 5
         }
     },
     "heavy_upgrade": {
@@ -39,6 +39,12 @@
         "name": "Basic Projectile",
         "upgrade": {
             "projectile_type_equipped": "basic"
+        }
+    },
+    "more_shoot_speed": {
+        "name": "Shoot Speed",
+        "upgrade": {
+            "shoot_cooldown": -0.15
         }
     }
 }
