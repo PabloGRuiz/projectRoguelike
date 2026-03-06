@@ -1,4 +1,5 @@
 import pygame
+from pygame._sdl2.video import Window
 import settings
 import random
 
@@ -20,9 +21,13 @@ class Game:
 
         # --- WINDOW SETUP ---
         self.screen = pygame.display.set_mode(
-            (settings.WIDTH, settings.HEIGHT), 
-            pygame.RESIZABLE | pygame.WINDOWMAXIMIZED
+            (settings.WIDTH, settings.HEIGHT),
+            pygame.RESIZABLE
         )
+
+        window = Window.from_display_module()
+        window.maximize()
+
         settings.WIDTH, settings.HEIGHT = self.screen.get_size()
 
         # --- WINDOW ICON ---
@@ -39,9 +44,13 @@ class Game:
         self.current_upgrades = []
         self.timerUI = TimerUI((255,255,255))
         self.update_button_positions()
-        self.state = "MAIN_MENU"
 
+        # Load backend logic first
         self.reSpawn()
+        
+        # --- INITIAL STATE & MUSIC ---
+        self.state = "MAIN_MENU"
+        self.audio.play_music("assets/music/Infinite_Hell_Main_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
 
     def update_button_positions(self):
         # --- UI RECTANGLES ---
@@ -51,7 +60,6 @@ class Game:
 
     def reSpawn(self):
         # --- GAME RESET ---
-        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
         self.timerUI.color = (255,255,255)
         self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5, self.audio)
         self.enemies = []
@@ -67,6 +75,9 @@ class Game:
         # --- BOSS TRACKERS ---
         self.boss_spawned = False
         self.boss_defeated = False
+        
+        # --- START LEVEL MUSIC ---
+        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
 
     def check_entity_alive(self):
         # --- GARBAGE COLLECTION ---
@@ -115,7 +126,7 @@ class Game:
             if event.type == pygame.VIDEORESIZE:
                 settings.WIDTH = event.w
                 settings.HEIGHT = event.h
-                self.screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.RESIZABLE | pygame.WINDOWMAXIMIZED)
+                self.screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.RESIZABLE)
                 self.update_button_positions() 
 
             if event.type == pygame.KEYDOWN:
@@ -190,8 +201,10 @@ class Game:
 
         self.check_entity_alive()
         
+        # --- DEATH & GAME OVER MUSIC ---
         if not self.player.alive:
             self.state = "GAME_OVER"
+            self.audio.play_music("assets/music/Infinite_Hell_Main_Theme.ogg", loop=False, volume=settings.MUSIC_VOLUME)
 
         # --- DYNAMIC MUSIC & BOSS TRACKING ---
         boss_alive = any(isinstance(enemy, Boss) for enemy in self.enemies)

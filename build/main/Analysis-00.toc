@@ -23,6 +23,9 @@
   ('assets\\music\\Crimson_Barrage_Boss1.ogg',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\assets\\music\\Crimson_Barrage_Boss1.ogg',
    'DATA'),
+  ('assets\\music\\Infinite_Hell_Main_Theme.ogg',
+   'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\assets\\music\\Infinite_Hell_Main_Theme.ogg',
+   'DATA'),
   ('assets\\music\\Pixel_Bloom_Stage2_Theme.ogg',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\assets\\music\\Pixel_Bloom_Stage2_Theme.ogg',
    'DATA'),
@@ -838,33 +841,9 @@
   ('settings',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\settings.py',
    'PYMODULE'),
-  ('pygame',
+  ('pygame._sdl2',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\__init__.py',
-   'PYMODULE'),
-  ('pygame.sndarray',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\sndarray.py',
-   'PYMODULE'),
-  ('pygame.surfarray',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\surfarray.py',
-   'PYMODULE'),
-  ('pygame.colordict',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\colordict.py',
-   'PYMODULE'),
-  ('pygame.macosx',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\macosx.py',
-   'PYMODULE'),
-  ('pygame.pkgdata',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\pkgdata.py',
-   'PYMODULE'),
-  ('pygame.typing',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\typing.py',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\__init__.py',
    'PYMODULE'),
   ('typing_extensions',
    'C:\\Users\\Pablo '
@@ -1042,6 +1021,34 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\locals.py',
    'PYMODULE'),
+  ('pygame.typing',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\typing.py',
+   'PYMODULE'),
+  ('pygame',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\__init__.py',
+   'PYMODULE'),
+  ('pygame.sndarray',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\sndarray.py',
+   'PYMODULE'),
+  ('pygame.surfarray',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\surfarray.py',
+   'PYMODULE'),
+  ('pygame.colordict',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\colordict.py',
+   'PYMODULE'),
+  ('pygame.macosx',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\macosx.py',
+   'PYMODULE'),
+  ('pygame.pkgdata',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\pkgdata.py',
+   'PYMODULE'),
   ('pygame._data_classes',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_data_classes.py',
@@ -1070,10 +1077,6 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\version.py',
    'PYMODULE'),
-  ('pygame._sdl2',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\__init__.py',
-   'PYMODULE'),
   ('platform',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\platform.py',
@@ -1082,69 +1085,69 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\python314.dll',
    'BINARY'),
-  ('SDL2_ttf.dll',
+  ('SDL2.dll',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2_ttf.dll',
-   'BINARY'),
-  ('libogg-0.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libogg-0.dll',
-   'BINARY'),
-  ('libwebpdemux-2.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libwebpdemux-2.dll',
-   'BINARY'),
-  ('libtiff-5.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libtiff-5.dll',
-   'BINARY'),
-  ('portmidi.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\portmidi.dll',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2.dll',
    'BINARY'),
   ('libwebp-7.dll',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libwebp-7.dll',
    'BINARY'),
-  ('libxmp.dll',
+  ('libpng16-16.dll',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libxmp.dll',
-   'BINARY'),
-  ('libjpeg-62.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libjpeg-62.dll',
-   'BINARY'),
-  ('SDL2.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2.dll',
-   'BINARY'),
-  ('SDL2_mixer.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2_mixer.dll',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libpng16-16.dll',
    'BINARY'),
   ('libopus-0.dll',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libopus-0.dll',
    'BINARY'),
-  ('libpng16-16.dll',
+  ('libxmp.dll',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libpng16-16.dll',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libxmp.dll',
    'BINARY'),
   ('libopusfile-0.dll',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libopusfile-0.dll',
    'BINARY'),
-  ('freetype.dll',
+  ('portmidi.dll',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\freetype.dll',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\portmidi.dll',
+   'BINARY'),
+  ('SDL2_image.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('SDL2_ttf.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('libtiff-5.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libtiff-5.dll',
+   'BINARY'),
+  ('libjpeg-62.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libjpeg-62.dll',
+   'BINARY'),
+  ('libwebpdemux-2.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libwebpdemux-2.dll',
+   'BINARY'),
+  ('libogg-0.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libogg-0.dll',
    'BINARY'),
   ('libwavpack-1.dll',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libwavpack-1.dll',
    'BINARY'),
-  ('SDL2_image.dll',
+  ('freetype.dll',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2_image.dll',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\freetype.dll',
+   'BINARY'),
+  ('SDL2_mixer.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2_mixer.dll',
    'BINARY'),
   ('select.pyd',
    'C:\\Users\\Pablo '
@@ -1198,9 +1201,17 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_queue.pyd',
    'EXTENSION'),
-  ('pygame\\imageext.cp314-win_amd64.pyd',
+  ('pygame\\_sdl2\\video.cp314-win_amd64.pyd',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\imageext.cp314-win_amd64.pyd',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\video.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\_sdl2\\sdl2.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\sdl2.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\_sdl2\\audio.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\audio.cp314-win_amd64.pyd',
    'EXTENSION'),
   ('pygame\\window.cp314-win_amd64.pyd',
    'C:\\Users\\Pablo '
@@ -1213,6 +1224,30 @@
   ('_asyncio.pyd',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('pygame\\constants.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\constants.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surface.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\surface.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\bufferproxy.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\bufferproxy.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rect.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\rect.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\color.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\color.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\imageext.cp314-win_amd64.pyd',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\imageext.cp314-win_amd64.pyd',
    'EXTENSION'),
   ('pygame\\system.cp314-win_amd64.pyd',
    'C:\\Users\\Pablo '
@@ -1254,10 +1289,6 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\mask.cp314-win_amd64.pyd',
    'EXTENSION'),
-  ('pygame\\surface.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\surface.cp314-win_amd64.pyd',
-   'EXTENSION'),
   ('pygame\\surflock.cp314-win_amd64.pyd',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\surflock.cp314-win_amd64.pyd',
@@ -1298,37 +1329,9 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\math.cp314-win_amd64.pyd',
    'EXTENSION'),
-  ('pygame\\bufferproxy.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\bufferproxy.cp314-win_amd64.pyd',
-   'EXTENSION'),
-  ('pygame\\color.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\color.cp314-win_amd64.pyd',
-   'EXTENSION'),
-  ('pygame\\rect.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\rect.cp314-win_amd64.pyd',
-   'EXTENSION'),
   ('pygame\\rwobject.cp314-win_amd64.pyd',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\rwobject.cp314-win_amd64.pyd',
-   'EXTENSION'),
-  ('pygame\\constants.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\constants.cp314-win_amd64.pyd',
-   'EXTENSION'),
-  ('pygame\\_sdl2\\video.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\video.cp314-win_amd64.pyd',
-   'EXTENSION'),
-  ('pygame\\_sdl2\\sdl2.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\sdl2.cp314-win_amd64.pyd',
-   'EXTENSION'),
-  ('pygame\\_sdl2\\audio.cp314-win_amd64.pyd',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\_sdl2\\audio.cp314-win_amd64.pyd',
    'EXTENSION'),
   ('pygame\\base.cp314-win_amd64.pyd',
    'C:\\Users\\Pablo '
@@ -1342,14 +1345,6 @@
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\VCRUNTIME140.dll',
    'BINARY'),
-  ('pygame\\SDL2.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2.dll',
-   'BINARY'),
-  ('pygame\\libwebp-7.dll',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libwebp-7.dll',
-   'BINARY'),
   ('pygame\\libogg-0.dll',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libogg-0.dll',
@@ -1357,6 +1352,14 @@
   ('pygame\\libopus-0.dll',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('pygame\\SDL2.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('pygame\\libwebp-7.dll',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\libwebp-7.dll',
    'BINARY'),
   ('libcrypto-3.dll',
    'C:\\Users\\Pablo '
@@ -1398,6 +1401,9 @@
   ('assets\\music\\Crimson_Barrage_Boss1.ogg',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\assets\\music\\Crimson_Barrage_Boss1.ogg',
    'DATA'),
+  ('assets\\music\\Infinite_Hell_Main_Theme.ogg',
+   'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\assets\\music\\Infinite_Hell_Main_Theme.ogg',
+   'DATA'),
   ('assets\\music\\Pixel_Bloom_Stage2_Theme.ogg',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\assets\\music\\Pixel_Bloom_Stage2_Theme.ogg',
    'DATA'),
@@ -1419,76 +1425,140 @@
   ('data\\upgrades.json',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\data\\upgrades.json',
    'DATA'),
-  ('pygame\\freesansbold.ttf',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\freesansbold.ttf',
-   'DATA'),
   ('pygame\\pygame_icon.bmp',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\pygame_icon.bmp',
    'DATA'),
+  ('pygame\\freesansbold.ttf',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pygame\\freesansbold.ttf',
+   'DATA'),
   ('base_library.zip',
    'D:\\_projects\\PYTHON_PROJECTS\\projectRoguelike\\build\\main\\base_library.zip',
    'DATA')],
- [('abc',
+ [('enum',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\abc.py',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\enum.py',
    'PYMODULE'),
-  ('warnings',
+  ('weakref',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\warnings.py',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\weakref.py',
    'PYMODULE'),
-  ('posixpath',
+  ('ntpath',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\posixpath.py',
-   'PYMODULE'),
-  ('keyword',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\keyword.py',
-   'PYMODULE'),
-  ('_collections_abc',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_collections_abc.py',
-   'PYMODULE'),
-  ('_weakrefset',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_weakrefset.py',
-   'PYMODULE'),
-  ('sre_constants',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_constants.py',
-   'PYMODULE'),
-  ('locale',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\locale.py',
-   'PYMODULE'),
-  ('sre_parse',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_parse.py',
-   'PYMODULE'),
-  ('genericpath',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\genericpath.py',
-   'PYMODULE'),
-  ('functools',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\functools.py',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ntpath.py',
    'PYMODULE'),
   ('stat',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\stat.py',
    'PYMODULE'),
-  ('traceback',
+  ('abc',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\traceback.py',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\abc.py',
+   'PYMODULE'),
+  ('reprlib',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\reprlib.py',
+   'PYMODULE'),
+  ('genericpath',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\genericpath.py',
+   'PYMODULE'),
+  ('copyreg',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\copyreg.py',
+   'PYMODULE'),
+  ('_collections_abc',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_collections_abc.py',
+   'PYMODULE'),
+  ('sre_constants',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_constants.py',
+   'PYMODULE'),
+  ('sre_parse',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_parse.py',
+   'PYMODULE'),
+  ('warnings',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\warnings.py',
+   'PYMODULE'),
+  ('_weakrefset',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_weakrefset.py',
+   'PYMODULE'),
+  ('keyword',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\keyword.py',
+   'PYMODULE'),
+  ('codecs',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\codecs.py',
+   'PYMODULE'),
+  ('re._parser',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_parser.py',
+   'PYMODULE'),
+  ('re._constants',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_constants.py',
+   'PYMODULE'),
+  ('re._compiler',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_compiler.py',
+   'PYMODULE'),
+  ('re._casefix',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_casefix.py',
+   'PYMODULE'),
+  ('re',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\__init__.py',
    'PYMODULE'),
   ('linecache',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\linecache.py',
    'PYMODULE'),
-  ('codecs',
+  ('heapq',
    'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\codecs.py',
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\heapq.py',
+   'PYMODULE'),
+  ('operator',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\operator.py',
+   'PYMODULE'),
+  ('traceback',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\traceback.py',
+   'PYMODULE'),
+  ('locale',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\locale.py',
+   'PYMODULE'),
+  ('io',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\io.py',
+   'PYMODULE'),
+  ('functools',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\functools.py',
+   'PYMODULE'),
+  ('sre_compile',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_compile.py',
+   'PYMODULE'),
+  ('collections',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\collections\\__init__.py',
+   'PYMODULE'),
+  ('types',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\types.py',
+   'PYMODULE'),
+  ('posixpath',
+   'C:\\Users\\Pablo '
+   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\posixpath.py',
    'PYMODULE'),
   ('encodings.zlib_codec',
    'C:\\Users\\Pablo '
@@ -1981,70 +2051,6 @@
   ('encodings',
    'C:\\Users\\Pablo '
    'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\encodings\\__init__.py',
-   'PYMODULE'),
-  ('heapq',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\heapq.py',
-   'PYMODULE'),
-  ('enum',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\enum.py',
-   'PYMODULE'),
-  ('re._parser',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_parser.py',
-   'PYMODULE'),
-  ('re._constants',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_constants.py',
-   'PYMODULE'),
-  ('re._compiler',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_compiler.py',
-   'PYMODULE'),
-  ('re._casefix',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\_casefix.py',
-   'PYMODULE'),
-  ('re',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\__init__.py',
-   'PYMODULE'),
-  ('operator',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\operator.py',
-   'PYMODULE'),
-  ('collections',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\collections\\__init__.py',
-   'PYMODULE'),
-  ('weakref',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\weakref.py',
-   'PYMODULE'),
-  ('copyreg',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\copyreg.py',
-   'PYMODULE'),
-  ('io',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\io.py',
-   'PYMODULE'),
-  ('reprlib',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\reprlib.py',
-   'PYMODULE'),
-  ('sre_compile',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_compile.py',
-   'PYMODULE'),
-  ('types',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\types.py',
-   'PYMODULE'),
-  ('ntpath',
-   'C:\\Users\\Pablo '
-   'Ruiz\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ntpath.py',
    'PYMODULE'),
   ('os',
    'C:\\Users\\Pablo '

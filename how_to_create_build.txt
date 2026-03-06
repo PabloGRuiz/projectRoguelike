@@ -1,0 +1,1 @@
+pyinstaller --noconsole --icon="assets/icon.ico" --add-data "assets;assets" --add-data "data;data" main.py
