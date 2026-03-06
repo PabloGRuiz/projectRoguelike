@@ -25,5 +25,14 @@
         "color": [255, 100, 0],
         "stats_changes": {},
         "special_events": ["clear_screen"]
+    },
+    "attack_speed_potion": {
+        "name": "Pocion de velocidad de ataque",
+        "size": 8,
+        "color": [150, 150, 150],
+        "stats_changes": {
+            "shoot_cooldown": -0.1
+        },
+        "special_events": []
     }
 }

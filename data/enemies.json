@@ -38,8 +38,8 @@
     "size": 60,
     "color": [150, 0, 0],
     "hp": 1500,
-    "damage": 10,
-    "speed": 80,
+    "damage": 5,
+    "speed": 50,
     "move_pattern": "center", 
     "shoot_pattern": "ring",
     "attack_cooldown": 2.5
