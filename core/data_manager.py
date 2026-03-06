@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENEMIES_PATH = os.path.join(BASE_DIR, 'data', 'enemies.json')
 ITEMS_PATH = os.path.join(BASE_DIR, 'data', 'items.json')
 UPGRADES_PATH = os.path.join(BASE_DIR, 'data', 'upgrades.json')
-PROJECTILE_PATH = os.path.join(BASE_DIR, 'data', 'projectile.json')
+PROJECTILES_PATH = os.path.join(BASE_DIR, 'data', 'projectiles.json')
 
 def load_enemies():
     try:
@@ -39,10 +39,10 @@ UPGRADES_DB = load_upgrades()
 
 def load_projectile():
     try:
-        with open(PROJECTILE_PATH, 'r') as file:
+        with open(PROJECTILES_PATH, 'r') as file:
             return json.load(file)
     except FileNotFoundError:
-        print(f"Error: No se encontró el archivo {PROJECTILE_PATH}")
+        print(f"Error: No se encontró el archivo {PROJECTILES_PATH}")
         return{}
 
-PROJECTILE_DB = load_projectile()
+PROJECTILES_DB = load_projectile()

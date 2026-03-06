@@ -22,7 +22,7 @@ class Game:
         self.current_upgrades = []
 
     def reSpawn(self):
-        self.player = Player(400, 250, 5)
+        self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5)
         self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
         self.enemies = []
         self.items = []
