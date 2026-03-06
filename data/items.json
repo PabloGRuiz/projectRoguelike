@@ -14,8 +14,8 @@
         "color": [150, 0, 150],
         "stats_changes": {
             "live_points": 2,
-            "shoot_damage": 1,
-            "speed": -10 
+            "shoot_damage": 2,
+            "speed": 10 
         },
         "special_events": []
     },

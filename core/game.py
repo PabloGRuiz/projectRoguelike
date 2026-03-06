@@ -3,6 +3,7 @@ import settings
 import random
 
 from entities.player import Player
+from entities.boss import Boss
 from GUI.levelCards import draw_level_up_menu
 from GUI.timerUI import TimerUI
 from systems.combat import Combat
@@ -22,12 +23,12 @@ class Game:
         self.current_upgrades = []
 
     def reSpawn(self):
-        self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5)
         self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
+        self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5, self.audio)
         self.enemies = []
         self.items = []
         self.projectiles = []
-        self.enemy_projectiles = [] # RESTORED: Boss bullets list
+        self.enemy_projectiles = []
         self.experiences = []
         self.floating_texts = []
         self.state = "PLAYING"
@@ -37,7 +38,7 @@ class Game:
     def check_entity_alive(self):
         self.enemies[:] = [e for e in self.enemies if e.alive]
         self.projectiles[:] = [p for p in self.projectiles if p.alive]
-        self.enemy_projectiles[:] = [ep for ep in self.enemy_projectiles if ep.alive] # RESTORED
+        self.enemy_projectiles[:] = [ep for ep in self.enemy_projectiles if ep.alive]
         self.experiences[:] = [xp for xp in self.experiences if xp.alive]
         self.items[:] = [item for item in self.items if item.alive]
         self.floating_texts[:] = [text for text in self.floating_texts if text.alive]
@@ -57,7 +58,7 @@ class Game:
         while running:
             dt = self.clock.tick(settings.FPS) / 1000
 
-            # --- EVENTS ---
+            # EVENTS
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -74,12 +75,11 @@ class Game:
                                 self.player.apply_upgrade(selected_upgrade)
                                 self.state = "PLAYING"
 
-            # --- UPDATE ---
+            # UPDATE
             if self.state == "PLAYING":
 
                 self.game_timer.update(dt)
 
-                # Player update
                 new_projectiles = self.player.update(dt, self.enemies)
 
                 if new_projectiles:
@@ -88,35 +88,29 @@ class Game:
                     else:
                         self.projectiles.append(new_projectiles)
 
-                # Spawner
                 self.spawner.update(dt, self.game_timer, self.player)
 
-                # Enemies
                 for enemy in self.enemies:
                     enemy.chase(self.player)
                     boss_projs = enemy.update(dt)
                     if boss_projs:
                         self.enemy_projectiles.extend(boss_projs)
 
-                # Player Projectiles
                 for projectile in self.projectiles:
                     projectile.update(dt)
                     
-                # RESTORED: Enemy Projectiles
                 for ep in self.enemy_projectiles:
                     ep.update(dt)
 
-                # Floating texts
                 for text in self.floating_texts:
                     text.update(dt)
 
-                # Level up trigger
                 if self.player.leveled_up:
                     self.generate_upgrade_options()
                     self.state = "LEVEL_UP"
                     self.player.leveled_up = False
 
-                # --- COLLISIONS ---
+                # COLLISIONS
                 Combat.check_entity_collision(
                     self.player,
                     self.enemies,
@@ -127,10 +121,17 @@ class Game:
                     self.floating_texts
                 )
 
-                # --- CLEAN-UP ---
+                # CLEAN-UP
                 self.check_entity_alive()
 
-            # --- DRAW ---
+                # DYNAMIC MUSIC
+                boss_alive = any(isinstance(enemy, Boss) for enemy in self.enemies)
+                if boss_alive:
+                    self.audio.play_music("assets/music/Crimson_Barrage_Boss1.ogg", loop=True, volume=0.5)
+                else:
+                    self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
+
+            # DRAW
             self.screen.fill((30, 30, 30))
 
             PlayerUI.draw(self.screen, self.player)
@@ -148,7 +149,6 @@ class Game:
             for projectile in self.projectiles:
                 projectile.draw(self.screen)
                 
-            # RESTORED: Draw boss bullets
             for ep in self.enemy_projectiles:
                 ep.draw(self.screen)
 
@@ -158,6 +158,7 @@ class Game:
             for text in self.floating_texts:
                 text.draw(self.screen)
 
+            # UI
             if self.state == "LEVEL_UP":
                 self.carta_rects = draw_level_up_menu(
                     self.screen,

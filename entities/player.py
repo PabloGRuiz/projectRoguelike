@@ -1,30 +1,34 @@
 import pygame
+import math
 import settings
 from entities.entity import Entity
 from entities.projectile import Projectile 
-from systems.audio_manager import AudioManager
 
 class Player(Entity):
-    def __init__(self, x, y, lp):
-        super().__init__(x, y, 30, (50,200,50))
+    def __init__(self, x, y, lp, audio_manager):
+        super().__init__(x, y, 30, (50, 200, 50))
+        
+        # --- STATS ---
         self.live_points = lp
+        self.audio = audio_manager
+        
+        # --- SHOOTING ---
         self.shoot_timer = 0
         self.shoot_cooldown = 0.8
         self.shoot_damage = 1
         self.can_shoot = False
-
         self.projectile_speed = 500
         self.pierce = 0
         self.bounce = 0
-
         self.shoot_backwards = False
         self.side_shots = False
         self.extra_projectiles = 0
-        
-        self.speed = 250
-
         self.amount_projectile = 1
         
+        # --- MOVEMENT ---
+        self.speed = 250
+        
+        # --- LEVELING ---
         self.xp = 0 
         self.level = 1
         self.xp_necesaria = 3
@@ -59,15 +63,12 @@ class Player(Entity):
         super().update(dt)
         return projectile
     
-    import math
-
     def create_projectiles(self, targets):
         if not targets:
             return None
 
         projectiles = []
 
-        # 🔎 enemigo más cercano
         closest = min(
             targets,
             key=lambda enemy: (enemy.pos - self.pos).length()
@@ -79,14 +80,12 @@ class Player(Entity):
             return None
 
         base_direction = base_direction.normalize()
-
         spread_angle = 30
         total = self.amount_projectile
 
-        # ---------------- DIRECCIONES BASE ----------------
+        # --- DIRECTIONS ---
         directions = []
 
-        # abanico principal
         for i in range(total):
             if total > 1:
                 angle_offset = spread_angle * (i - (total - 1) / 2)
@@ -95,20 +94,17 @@ class Player(Entity):
             else:
                 directions.append(base_direction)
 
-        # disparo atrás
         if self.shoot_backwards:
             directions.append(-base_direction)
 
-        # laterales
         if self.side_shots:
             directions.append(base_direction.rotate(90))
             directions.append(base_direction.rotate(-90))
 
-        # extra proyectiles (misma dirección base)
         for _ in range(self.extra_projectiles):
             directions.append(base_direction)
 
-        # ---------------- CREAR PROYECTILES ----------------
+        # --- SPAWN ---
         for direction in directions:
             projectile = Projectile(
                 self.pos.x,
@@ -119,13 +115,15 @@ class Player(Entity):
                 pierce=self.pierce,
                 bounce=self.bounce
             )
-
             projectiles.append(projectile)
-        
-        AudioManager.play_music("assets/music/shoot.wav", False, volume=0.1)
+
+        # --- AUDIO ---
+        if projectiles:
+            self.audio.play_sound("assets/sfx/shoot.wav", volume=0.3)
 
         return projectiles
 
+    # --- PROGRESSION ---
     def level_up(self, xp):
         self.xp += xp
         
@@ -133,7 +131,6 @@ class Player(Entity):
             self.xp -= self.xp_necesaria
             self.level += 1
             self.xp_necesaria = int(self.xp_necesaria * 1.5) 
-            
             self.leveled_up = True
 
     def apply_upgrade(self, upgrade_data):
