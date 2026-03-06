@@ -16,7 +16,7 @@ class Item(Entity):
         self.stats_changes = stats.get("stats_changes", {})
         self.special_events = stats.get("special_events", [])
     
-    def draw(self, screen):
+    def draw_entity(self, screen):
         top = (self.pos.x, self.pos.y - self.size)
         left = (self.pos.x - self.size, self.pos.y + self.size)
         right = (self.pos.x + self.size, self.pos.y + self.size)

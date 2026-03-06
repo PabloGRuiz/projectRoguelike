@@ -21,7 +21,7 @@ class Player(Entity):
         self.side_shots = False
         self.extra_projectiles = 0
         self.amount_projectile = 1
-        self.projectile_type_equipped = "basic"
+        self.projectile_type_equipped = "light"
         
         # --- MOVEMENT ---
         self.speed = 250

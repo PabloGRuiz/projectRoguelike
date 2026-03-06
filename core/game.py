@@ -21,6 +21,7 @@ class Game:
         self.audio = AudioManager() 
         self.reSpawn()
         self.current_upgrades = []
+        self.timerUI = TimerUI((255,255,255))
 
     def reSpawn(self):
         self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
@@ -88,7 +89,7 @@ class Game:
                     else:
                         self.projectiles.append(new_projectiles)
 
-                self.spawner.update(dt, self.game_timer, self.player)
+                self.spawner.update(dt, self.game_timer, self.player, self.timerUI)
 
                 for enemy in self.enemies:
                     enemy.chase(self.player)
@@ -135,7 +136,7 @@ class Game:
             self.screen.fill((30, 30, 30))
 
             PlayerUI.draw(self.screen, self.player)
-            TimerUI.draw_timer(self.screen, self.game_timer.current_second)
+            self.timerUI.draw_timer(self.screen, self.game_timer.current_second)
 
             if self.player.alive:
                 self.player.draw(self.screen)

@@ -33,10 +33,12 @@ class Entity:
         self.blink_timer = duration
         
     def draw(self, screen):
-        # --- BLINKING ---
-        if self.is_blinking:
-            return
+        # --- BLINKING LOGIC ---
+        if not self.is_blinking:
+            self.draw_entity(screen)
             
+    def draw_entity(self, screen):
+        # --- DEFAULT DRAW ---
         pygame.draw.rect(
             screen,
             self.color,

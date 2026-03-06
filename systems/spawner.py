@@ -31,12 +31,12 @@ class Spawner:
         
         self.boss_spawned = False
 
-    def update(self, dt, timer, player):
+    def update(self, dt, timer, player, timerUI):
         seconds = timer.get_seconds()
-        
         boss_alive = any(isinstance(e, Boss) for e in self.enemy_list)
 
         if seconds >= 120 and not self.boss_spawned:
+            timerUI.color = (250,50,50)
             self.spawn_boss(player)
             self.boss_spawned = True
             boss_alive = True

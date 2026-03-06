@@ -32,5 +32,5 @@ class Experience(Entity):
             
         return points
 
-    def draw(self, screen):
+    def draw_entity(self, screen):
         screen.blit(self.image, (self.pos.x - self.size, self.pos.y - self.size))
