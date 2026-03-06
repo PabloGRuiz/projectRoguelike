@@ -2,6 +2,7 @@ import pygame
 import settings
 from entities.entity import Entity
 from entities.projectile import Projectile 
+from systems.audio_manager import AudioManager
 
 class Player(Entity):
     def __init__(self, x, y, lp):
@@ -120,6 +121,8 @@ class Player(Entity):
             )
 
             projectiles.append(projectile)
+        
+        AudioManager.play_music("assets/music/shoot.wav", False, volume=0.1)
 
         return projectiles
 
