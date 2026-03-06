@@ -1,0 +1,17 @@
+{
+    "basic": {
+        "name": "Basic",
+        "type": "basic",
+        "damage": 1
+    },
+    "pierce": {
+        "name": "Pierce",
+        "type": "pierce",
+        "damage": 1
+    },
+    "bounce": {
+        "name": "Bounce",
+        "type": "bounce",
+        "damage": 1
+    }
+}

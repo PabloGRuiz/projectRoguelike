@@ -2,19 +2,10 @@ import pygame
 import settings
 
 class Projectile:
-    def __init__(
-        self,
-        x,
-        y,
-        direction,
-        speed,
-        damage,
-        pierce=0,
-        bounce=0
-    ):
+    def __init__(self, x, y, direction, speed, damage,  pierce=0, bounce=0):
 
         self.size = 4
-        self.color = (255, 200, 50)
+        self.color = (149, 39, 245)
         self.radius = 5
 
         self.pos = pygame.math.Vector2(x, y)
