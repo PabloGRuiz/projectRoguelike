@@ -7,7 +7,6 @@ class Timer():
         self.global_time += dt
         if int(self.global_time) > self.current_second:
             self.current_second = int(self.global_time)
-            print(f"Tiempo de supervivencia: {self.current_second}s")
             
     def get_seconds(self):
         return self.current_second

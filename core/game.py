@@ -4,6 +4,7 @@ import random
 
 from entities.player import Player
 from GUI.levelCards import draw_level_up_menu
+from GUI.timerUI import TimerUI
 from systems.combat import Combat
 from core.data_manager import ENEMY_DB, ITEMS_DB, UPGRADES_DB
 from systems.spawner import Spawner
@@ -93,7 +94,6 @@ class Game:
                 # Enemies
                 for enemy in self.enemies:
                     enemy.chase(self.player)
-                    # RESTORED: Capture boss projectiles if they shoot
                     boss_projs = enemy.update(dt)
                     if boss_projs:
                         self.enemy_projectiles.extend(boss_projs)
@@ -121,7 +121,7 @@ class Game:
                     self.player,
                     self.enemies,
                     self.projectiles,
-                    self.enemy_projectiles, # RESTORED: Passed the missing argument!
+                    self.enemy_projectiles,
                     self.experiences,
                     self.items,
                     self.floating_texts
@@ -134,6 +134,7 @@ class Game:
             self.screen.fill((30, 30, 30))
 
             PlayerUI.draw(self.screen, self.player)
+            TimerUI.draw_timer(self.screen, self.game_timer.current_second)
 
             if self.player.alive:
                 self.player.draw(self.screen)
