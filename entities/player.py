@@ -6,7 +6,7 @@ from entities.projectile import Projectile
 
 class Player(Entity):
     def __init__(self, x, y, lp, audio_manager):
-        super().__init__(x, y, 30, (50, 200, 50))
+        super().__init__(x, y, 30, (40, 180, 40))
         
         # --- STATS ---
         self.live_points = lp
@@ -14,7 +14,7 @@ class Player(Entity):
         
         # --- SHOOTING ---
         self.shoot_timer = 0
-        self.shoot_cooldown = 1.5
+        self.shoot_cooldown = 1.2
         self.shoot_damage = 1
         self.can_shoot = False
         self.shoot_backwards = False

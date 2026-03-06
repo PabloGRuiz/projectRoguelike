@@ -35,7 +35,7 @@ class Spawner:
         seconds = timer.get_seconds()
         boss_alive = any(isinstance(e, Boss) for e in self.enemy_list)
 
-        if seconds >= 180 and not self.boss_spawned:
+        if seconds >= 240 and not self.boss_spawned:
             timerUI.color = (250,50,50)
             self.spawn_boss(player)
             self.boss_spawned = True
@@ -46,7 +46,6 @@ class Spawner:
             self.spawn_item(player)
             self.item_time = 0.0
 
-        # Pause standard enemy spawns if Boss is alive
         if boss_alive:
             return 
             

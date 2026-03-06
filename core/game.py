@@ -12,30 +12,47 @@ from core.data_manager import ENEMY_DB, ITEMS_DB, UPGRADES_DB
 from systems.spawner import Spawner
 from systems.timer import Timer
 from GUI.playerUI import PlayerUI
-from systems.audio_manager import AudioManager  
+from systems.audio_manager import AudioManager
 
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.RESIZABLE)
-        self.clock = pygame.time.Clock()
-        self.audio = AudioManager() 
 
+        # --- WINDOW SETUP ---
+        self.screen = pygame.display.set_mode(
+            (settings.WIDTH, settings.HEIGHT), 
+            pygame.RESIZABLE | pygame.WINDOWMAXIMIZED
+        )
+        settings.WIDTH, settings.HEIGHT = self.screen.get_size()
+
+        # --- WINDOW ICON ---
+        try:
+            icon_img = pygame.image.load("assets/icon.png") 
+            pygame.display.set_icon(icon_img)
+        except FileNotFoundError:
+            pass
+
+        self.clock = pygame.time.Clock()
+        self.audio = AudioManager()
+
+        # --- UI INITIALIZATION ---
         self.current_upgrades = []
         self.timerUI = TimerUI((255,255,255))
         self.update_button_positions()
-        self.state = "MAIN_MENU" 
+        self.state = "MAIN_MENU"
 
         self.reSpawn()
 
     def update_button_positions(self):
+        # --- UI RECTANGLES ---
         self.btn_jugar = pygame.Rect(settings.WIDTH // 2 - 100, settings.HEIGHT // 2 - 50, 200, 60)
         self.btn_reintentar = pygame.Rect(settings.WIDTH // 2 - 120, settings.HEIGHT // 2 - 50, 240, 60)
         self.btn_salir = pygame.Rect(settings.WIDTH // 2 - 100, settings.HEIGHT // 2 + 50, 200, 60)
 
     def reSpawn(self):
+        # --- GAME RESET ---
+        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
         self.timerUI.color = (255,255,255)
-        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
         self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5, self.audio)
         self.enemies = []
         self.items = []
@@ -46,8 +63,13 @@ class Game:
         self.state = "PLAYING"
         self.spawner = Spawner(self.enemies, self.items)
         self.game_timer = Timer()
+        
+        # --- BOSS TRACKERS ---
+        self.boss_spawned = False
+        self.boss_defeated = False
 
     def check_entity_alive(self):
+        # --- GARBAGE COLLECTION ---
         self.enemies[:] = [e for e in self.enemies if e.alive]
         self.projectiles[:] = [p for p in self.projectiles if p.alive]
         self.enemy_projectiles[:] = [ep for ep in self.enemy_projectiles if ep.alive]
@@ -57,6 +79,7 @@ class Game:
         self.player.can_shoot = self.player.alive
 
     def generate_upgrade_options(self):
+        # --- UPGRADE POOL ---
         available_upgrades = []
         for upgrade in UPGRADES_DB.values():
             stats = upgrade["upgrade"]
@@ -71,6 +94,7 @@ class Game:
         )
 
     def run(self):
+        # --- MAIN LOOP ---
         running = True
         while running:
             dt = self.clock.tick(settings.FPS) / 1000
@@ -83,6 +107,7 @@ class Game:
         pygame.quit()
 
     def handle_events(self):
+        # --- EVENT HANDLING ---
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
@@ -90,20 +115,23 @@ class Game:
             if event.type == pygame.VIDEORESIZE:
                 settings.WIDTH = event.w
                 settings.HEIGHT = event.h
-                self.screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.RESIZABLE)
-                self.update_button_positions()
+                self.screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT), pygame.RESIZABLE | pygame.WINDOWMAXIMIZED)
+                self.update_button_positions() 
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
                     self.reSpawn()
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                
+                # --- MAIN MENU CLICKS ---
                 if self.state == "MAIN_MENU":
                     if self.btn_jugar.collidepoint(event.pos):
                         self.reSpawn() 
                     elif self.btn_salir.collidepoint(event.pos):
                         return False
                         
+                # --- LEVEL UP CLICKS ---
                 elif self.state == "LEVEL_UP":
                     for i, rect in enumerate(self.carta_rects):
                         if rect.collidepoint(event.pos):
@@ -111,6 +139,7 @@ class Game:
                             self.player.apply_upgrade(selected_upgrade)
                             self.state = "PLAYING"
                             
+                # --- GAME OVER CLICKS ---
                 elif self.state == "GAME_OVER":
                     if self.btn_reintentar.collidepoint(event.pos):
                         self.reSpawn()
@@ -119,6 +148,7 @@ class Game:
         return True
 
     def update_game(self, dt):
+        # --- GAME LOGIC ---
         self.game_timer.update(dt)
 
         new_projectiles = self.player.update(dt, self.enemies)
@@ -163,16 +193,26 @@ class Game:
         if not self.player.alive:
             self.state = "GAME_OVER"
 
-        # DYNAMIC MUSIC
+        # --- DYNAMIC MUSIC & BOSS TRACKING ---
         boss_alive = any(isinstance(enemy, Boss) for enemy in self.enemies)
+        
+        if boss_alive:
+            self.boss_spawned = True
+        elif self.boss_spawned and not boss_alive:
+            self.boss_defeated = True
+
         if boss_alive and self.state == "PLAYING":
-            self.audio.play_music("assets/music/Crimson_Barrage_Boss1.ogg", loop=True, volume=0.5)
+            self.audio.play_music("assets/music/Crimson_Barrage_Boss1.ogg", loop=True, volume=settings.MUSIC_VOLUME)
+        elif self.boss_defeated and self.state == "PLAYING":
+            self.timerUI.color = (255,255,255)
+            self.audio.play_music("assets/music/Pixel_Bloom_Stage2_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
         elif self.state == "PLAYING":
-            self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
+            self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
 
     def draw_game_state(self):
+        # --- RENDER ---
         self.screen.fill((30, 30, 30))
-        mouse_pos = pygame.mouse.get_pos()
+        mouse_pos = pygame.mouse.get_pos() 
 
         if self.state == "MAIN_MENU":
             draw_main_menu(self.screen, self.btn_jugar, self.btn_salir, mouse_pos)
@@ -188,6 +228,7 @@ class Game:
         pygame.display.flip()
 
     def draw_entities(self):
+        # --- RENDER ENTITIES ---
         PlayerUI.draw(self.screen, self.player)
         self.timerUI.draw_timer(self.screen, self.game_timer.current_second)
 

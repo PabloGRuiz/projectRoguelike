@@ -36,6 +36,7 @@ class Entity:
         # --- RETRO HIT FLASH LOGIC ---
         if self.is_blinking:
             if int(self.blink_timer * 20) % 2 == 0:
+                # Frame normal
                 self.draw_entity(screen)
             else:
                 original_color = self.color

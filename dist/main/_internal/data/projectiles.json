@@ -1,0 +1,29 @@
+{
+    "basic": {
+        "name": "Basic Projectile",
+        "damage": 2,
+        "bounce": 0,
+        "pierce": 0,
+        "speed": 500,
+        "color": [150, 40, 245],
+        "size": 4
+    },
+    "heavy": {
+        "name": "Heavy Projectile",
+        "damage": 3,
+        "bounce": 0,
+        "pierce": 1,
+        "speed": 400,
+        "color": [255, 150, 10],
+        "size": 6
+    },
+    "light": {
+        "name": "Light Projectile",
+        "damage": 1,
+        "bounce": 1,
+        "pierce": 2,
+        "speed": 700,
+        "color": [50, 250, 200],
+        "size": 3
+    }
+}

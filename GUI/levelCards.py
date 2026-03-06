@@ -15,7 +15,7 @@ def draw_level_up_menu(screen, player, upgrades):
         48,
         (255, 215, 0),
         settings.WIDTH // 2 - 100,
-        settings.HEIGHT // 2 - 150
+        settings.HEIGHT // 2 - 200
     )
 
     card_width = 200

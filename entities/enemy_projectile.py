@@ -14,7 +14,7 @@ class EnemyProjectile:
         self.dir_y = dir_y
         self.damage = damage
         self.speed = speed
-        self.lifetime = 5.0 
+        self.lifetime = 10.0 
         self.current_time = 0.0
 
     def update(self, dt):
