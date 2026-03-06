@@ -24,7 +24,7 @@ class Game:
         self.timerUI = TimerUI((255,255,255))
 
     def reSpawn(self):
-        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=0.5)
+        self.audio.play_music("assets/music/Pixel_Wings_Stage1_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
         self.player = Player(settings.WIDTH // 2, settings.HEIGHT // 2, 5, self.audio)
         self.enemies = []
         self.items = []
