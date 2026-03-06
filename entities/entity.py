@@ -33,8 +33,16 @@ class Entity:
         self.blink_timer = duration
         
     def draw(self, screen):
-        # --- BLINKING LOGIC ---
-        if not self.is_blinking:
+        # --- RETRO HIT FLASH LOGIC ---
+        if self.is_blinking:
+            if int(self.blink_timer * 20) % 2 == 0:
+                self.draw_entity(screen)
+            else:
+                original_color = self.color
+                self.color = (255, 255, 255)
+                self.draw_entity(screen)
+                self.color = original_color
+        else:
             self.draw_entity(screen)
             
     def draw_entity(self, screen):

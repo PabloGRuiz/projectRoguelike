@@ -4,7 +4,7 @@ from entities.entity import Entity
 
 class Experience(Entity):
     def __init__(self, x, y, xp):
-        super().__init__(x, y, 6, (240, 20, 210))
+        super().__init__(x, y, 6, (20, 20, 200))
         self.experience = xp
         # --- MAGNET SYSTEM ---
         self.target = None
