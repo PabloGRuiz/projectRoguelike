@@ -1,31 +1,29 @@
 import pygame
 import settings
-
+from core.data_manager import PROJECTILES_DB
 class Projectile:
-    def __init__(self, x, y, direction, speed, damage,  pierce=0, bounce=0):
+    def __init__(self, x, y, direction, projectile_type = "basic"):
 
-        self.size = 4
-        self.color = (149, 39, 245)
-        self.radius = 5
+        stats = PROJECTILES_DB.get(projectile_type, PROJECTILES_DB["basic"])
 
+        self.color = stats["color"]
+        self.size = stats["size"]
+        self.radius = stats["size"] + 1
+        self.speed = stats["speed"]
+        self.damage = stats["damage"]
+        self.pierce = stats["pierce"]
+        self.bounce = stats["bounce"]
+        
         self.pos = pygame.math.Vector2(x, y)
         self.direction = pygame.math.Vector2(direction)
 
         if self.direction.length() != 0:
             self.direction = self.direction.normalize()
-
-        self.speed = speed
-
-        self.damage = damage
-        self.pierce = pierce
-        self.bounce = bounce
-
+            
         self.alive = True
 
     def update(self, dt):
         self.pos += self.direction * self.speed * dt
-
-        # Matar si sale de pantalla
         if (
             self.pos.x < 0 or
             self.pos.x > settings.WIDTH or

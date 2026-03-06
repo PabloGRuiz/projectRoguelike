@@ -17,13 +17,11 @@ class Player(Entity):
         self.shoot_cooldown = 0.8
         self.shoot_damage = 1
         self.can_shoot = False
-        self.projectile_speed = 500
-        self.pierce = 0
-        self.bounce = 0
         self.shoot_backwards = False
         self.side_shots = False
         self.extra_projectiles = 0
         self.amount_projectile = 1
+        self.projectile_type_equipped = "basic"
         
         # --- MOVEMENT ---
         self.speed = 250
@@ -110,10 +108,7 @@ class Player(Entity):
                 self.pos.x,
                 self.pos.y,
                 direction,
-                self.projectile_speed,
-                self.shoot_damage,
-                pierce=self.pierce,
-                bounce=self.bounce
+                self.projectile_type_equipped
             )
             projectiles.append(projectile)
 

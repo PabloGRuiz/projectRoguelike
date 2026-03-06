@@ -71,11 +71,13 @@ class Combat:
                 if enemy.alive and projectile.alive and Collision.check(projectile, enemy):
                     last_enemy_hit = getattr(enemy, 'last_hit_time', 0)
                     
+                    total_damage = projectile.damage + player.shoot_damage
+                    
                     if current_time - last_enemy_hit > 100:
-                        damage_text = FloatingText(enemy.pos.x, enemy.pos.y - 10, projectile.damage)
+                        damage_text = FloatingText(enemy.pos.x, enemy.pos.y - 10, total_damage)
                         floating_texts.append(damage_text)
 
-                        enemy.live_points -= projectile.damage
+                        enemy.live_points -= total_damage
                         enemy.last_hit_time = current_time
                         
                         # --- BLINKING ---

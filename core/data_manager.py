@@ -37,7 +37,7 @@ def load_upgrades():
 
 UPGRADES_DB = load_upgrades()
 
-def load_projectile():
+def load_projectiles():
     try:
         with open(PROJECTILES_PATH, 'r') as file:
             return json.load(file)
@@ -45,4 +45,4 @@ def load_projectile():
         print(f"Error: No se encontró el archivo {PROJECTILES_PATH}")
         return{}
 
-PROJECTILES_DB = load_projectile()
+PROJECTILES_DB = load_projectiles()
