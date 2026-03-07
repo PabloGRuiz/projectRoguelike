@@ -60,7 +60,7 @@ class PlayerUI:
             Tools.draw_text(screen, f'x{player.level}', 22, (255, 255, 255), 50, y_pos_level)
         
         # --- XP ---
-        Tools.draw_text(screen, f'XP: {player.xp}', 20, (255, 255, 255), 20, 80)
+        Tools.draw_text(screen, f'XP: {player.xp} / {player.xp_necesaria}', 20, (255, 255, 255), 20, 80)
 
         # --- HEALTH ---
         heart_img = PlayerUI.get_heart_surface()

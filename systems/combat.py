@@ -51,6 +51,8 @@ class Combat:
         # --- XP ---
         for xp in experiences:
             if xp.alive and Collision.check(player, xp):
+                experience_text = FloatingText(xp.pos.x, xp.pos.y - 10, f"+{xp.experience}xp", (255, 255, 255))
+                floating_texts.append(experience_text)
                 player.level_up(xp.experience)
                 xp.dead()
 
@@ -101,7 +103,8 @@ class Combat:
                         projectile.on_hit(enemies)
                         
                         if enemy.live_points <= 0:
-                            xp = Experience(enemy.pos.x, enemy.pos.y, 1)
+                            enemy_power = ((enemy.total_hp + enemy.damage)// 2)
+                            xp = Experience(enemy.pos.x, enemy.pos.y, enemy_power)
                             experiences.append(xp)
 
         # --- BOSS PROJECTILES ---

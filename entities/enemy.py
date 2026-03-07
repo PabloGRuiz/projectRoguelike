@@ -7,6 +7,7 @@ class Enemy(Entity):
         size = stats["size"]
         color = tuple(stats["color"])
         super().__init__(x, y, size, color)
+        self.total_hp = stats["hp"]
         self.live_points = stats["hp"]
         self.damage = stats["damage"]
         self.speed = stats["speed"]

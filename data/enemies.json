@@ -51,7 +51,7 @@
   "boss_ojo_maldito": {
     "size": 60,
     "color": [150, 0, 0],
-    "hp": 2000,
+    "hp": 3500,
     "damage": 5,
     "speed": 50,
     "move_pattern": "center", 

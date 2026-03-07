@@ -60,5 +60,11 @@
         "upgrade": {
             "shoot_cooldown": -0.15
         }
+    },
+    "multiple_shoot": {
+        "name": "Multiple Shoot",
+        "upgrade": {
+            "multi_shoot": 1
+        }
     }
 }

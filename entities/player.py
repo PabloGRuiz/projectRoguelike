@@ -8,25 +8,26 @@ class Player(Entity):
     def __init__(self, x, y, lp, audio_manager):
         super().__init__(x, y, 30, (40, 180, 40))
         
-        # --- STATS ---
         self.live_points = lp
         self.audio = audio_manager
         
-        # --- SHOOTING ---
+        self.can_shoot = False
         self.shoot_timer = 0
         self.shoot_cooldown = 1.2
         self.shoot_damage = 1
-        self.can_shoot = False
         self.shoot_backwards = False
+        self.multi_shoot = 1
         self.side_shots = False
         self.extra_projectiles = 0
         self.amount_projectile = 1
         self.projectile_type_equipped = "basic"
         
-        # --- MOVEMENT ---
-        self.speed = 250
+        # --- SISTEMA DE RÁFAGA ---
+        self.burst_queue = 0      
+        self.burst_timer = 0      
+        self.burst_delay = 0.1   
         
-        # --- LEVELING ---
+        self.speed = 250
         self.xp = 0 
         self.level = 1
         self.xp_necesaria = 3
@@ -51,21 +52,28 @@ class Player(Entity):
         self.limit()
         self.handle_input()
         
-        projectile = None
-        
+        projectiles = []
         self.shoot_timer += dt
-        if self.shoot_timer > self.shoot_cooldown and self.can_shoot:
+        
+        if self.shoot_timer >= self.shoot_cooldown and self.can_shoot:
             self.shoot_timer = 0
-            projectile = self.create_projectiles(targets)
+            self.burst_queue = self.multi_shoot 
+            self.burst_timer = self.burst_delay 
+
+        if self.burst_queue > 0:
+            self.burst_timer += dt
+            if self.burst_timer >= self.burst_delay:
+                self.burst_timer = 0
+                batch = self.create_projectiles(targets)
+                projectiles.extend(batch)
+                self.burst_queue -= 1
         
         super().update(dt)
-        return projectile
+        return projectiles
     
     def create_projectiles(self, targets):
         if not targets:
-            return None
-
-        projectiles = []
+            return []
 
         closest = min(
             targets,
@@ -73,17 +81,14 @@ class Player(Entity):
         )
 
         base_direction = closest.pos - self.pos
-
         if base_direction.length() == 0:
-            return None
+            return []
 
         base_direction = base_direction.normalize()
         spread_angle = 30
         total = self.amount_projectile
 
-        # --- DIRECTIONS ---
         directions = []
-
         for i in range(total):
             if total > 1:
                 angle_offset = spread_angle * (i - (total - 1) / 2)
@@ -102,7 +107,7 @@ class Player(Entity):
         for _ in range(self.extra_projectiles):
             directions.append(base_direction)
 
-        # --- SPAWN ---
+        spawned = []
         for direction in directions:
             projectile = Projectile(
                 self.pos.x,
@@ -110,18 +115,15 @@ class Player(Entity):
                 direction,
                 self.projectile_type_equipped
             )
-            projectiles.append(projectile)
+            spawned.append(projectile)
 
-        # --- AUDIO ---
-        if projectiles:
+        if spawned:
             self.audio.play_sound("assets/sfx/shoot.wav", volume=0.3)
 
-        return projectiles
+        return spawned
 
-    # --- PROGRESSION ---
     def level_up(self, xp):
         self.xp += xp
-        
         if self.xp >= self.xp_necesaria:
             self.xp -= self.xp_necesaria
             self.level += 1
@@ -132,18 +134,12 @@ class Player(Entity):
         for attr, value in upgrade_data["upgrade"].items():
             if hasattr(self, attr):
                 current_value = getattr(self, attr)
-                
-                # --- STRINGS (REEMPLAZO) ---
                 if isinstance(value, str):
                     new_value = value
-                    
-                # --- NÚMEROS (SUMA) ---
                 else:
                     new_value = current_value + value
-
                     if attr == "shoot_cooldown":
                         new_value = max(0.2, new_value)
-
                 setattr(self, attr, new_value)
 
     def limit(self):
