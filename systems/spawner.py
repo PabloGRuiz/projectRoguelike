@@ -82,7 +82,11 @@ class Spawner:
         self.item_list.append(item)
 
     def spawn_boss(self, player):
+        available_bosses = ["boss_cursed_eye", "boss_golem"]
+        chosen_boss = random.choice(available_bosses)
+
         spawn_x, spawn_y = GenerateCoords(player, 800)
-        boss = Boss(spawn_x, spawn_y, "boss_ojo_maldito")
+        boss = Boss(spawn_x, spawn_y, chosen_boss)
+        
         self.enemy_list.append(boss)
-        print(f"WARNING: BOSS SPAWNED WITH {boss.live_points} HP!")
+        print(f"WARNING: {chosen_boss.upper()} SPAWNED WITH {boss.live_points} HP!")

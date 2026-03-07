@@ -48,24 +48,25 @@
     "damage": 4,
     "speed": 120
   },
-  "boss_ojo_maldito": {
+  "boss_cursed_eye": {
     "size": 60,
     "color": [150, 0, 0],
-    "hp": 3500,
-    "damage": 5,
-    "speed": 50,
-    "move_pattern": "center", 
-    "shoot_pattern": "ring",
-    "attack_cooldown": 2.5
+    "hp": 3200,
+    "damage": 6,
+    "speed": 90,
+    "move_pattern": "orbit_player",
+    "shoot_pattern": "eye_patterns",
+    "attack_cooldown": 1.2
   },
-  "boss_torreta": {
-    "size": 50,
-    "color": [100, 100, 100],
-    "hp": 1500,
-    "damage": 5,
+
+  "boss_golem": {
+    "size": 80,
+    "color": [120, 120, 120],
+    "hp": 6500,
+    "damage": 8,
     "speed": 0,
-    "move_pattern": "static",
-    "shoot_pattern": "spiral",
-    "attack_cooldown": 0.5
+    "move_pattern": "center_static",
+    "shoot_pattern": "arena_control",
+    "attack_cooldown": 1.6
   }
 }

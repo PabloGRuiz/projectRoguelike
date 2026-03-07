@@ -11,7 +11,7 @@ class Enemy(Entity):
         self.live_points = stats["hp"]
         self.damage = stats["damage"]
         self.speed = stats["speed"]
-    def chase(self,target):
+    def chase(self,target,dt):
         direction = target.pos - self.pos
         if direction.length() > 0:
             direction = direction.normalize()

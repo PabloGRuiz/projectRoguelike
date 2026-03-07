@@ -42,8 +42,7 @@ class Game:
         self.timerUI = TimerUI((255,255,255))
         self.update_button_positions()
 
-        self.reSpawn()
-        
+        self.reSpawn()        
         self.state = "MAIN_MENU"
         self.audio.play_music("assets/music/Infinite_Hell_Main_Theme.ogg", loop=True, volume=settings.MUSIC_VOLUME)
 
@@ -147,7 +146,7 @@ class Game:
         self.spawner.update(dt, self.game_timer, self.player, self.timerUI)
 
         for enemy in self.enemies:
-            enemy.chase(self.player)
+            enemy.chase(self.player,dt)
             boss_projs = enemy.update(dt)
             if boss_projs:
                 self.enemy_projectiles.extend(boss_projs)
